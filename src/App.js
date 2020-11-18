@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "./App.css";
 import BeyContainer from './Containers/BeyContainer';
 import Favorites from './Containers/Favorites';
@@ -6,10 +6,12 @@ import beyArray from './api';
 
 const App = () => {
   
+  const [beyonceArray, setBeyArray] = useState(beyArray)
+
   return (
     <div className="container" >
-      <BeyContainer beyArray ={beyArray} />
-      <Favorites beyArray={beyArray} />
+      <BeyContainer beyArray ={beyonceArray} setArray={setBeyArray} />
+      <Favorites beyArray={beyonceArray} setArray={setBeyArray} />
     </div>
   );
 };
