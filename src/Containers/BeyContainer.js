@@ -1,34 +1,28 @@
 import React from "react";
 import BeyCard from "../Components/BeyCard";
 
-
-const BeyContainer = ({beyArray, setArray}) => {
-
-  const generateCards = () =>
-    beyArray.map((beyonceObj) => (
-      <div onClick={() => findAndChange(beyonceObj.id)}>
-        <BeyCard key={beyonceObj.id} beyObj={beyonceObj} />
-      </div>
-    ));
-
-  const updateArray = (id) => 
-  beyArray.map((beyObj) => beyObj.id === id ? {
-      ...beyObj,
-      favorite: !beyObj.favorite
-    } : beyObj);
-
-  const findAndChange = (id) => {
-    setArray(updateArray(id))
+const BeyContainer = ({ beyArray, setBeyArray }) => {
+  const ignoreWhenFavIsTrue = (placeholder) => {
+    return true;
   };
 
- 
-    return (
-      <div className="index">
-        <h1>Index</h1>
-        {generateCards()}
-      </div>
-    );
-  
-}
+  const generateCards = () =>
+    beyArray.map((beyObj) => (
+      <BeyCard
+        key={beyObj.id}
+        beyObj={beyObj}
+        beyArray={beyArray}
+        setBeyArray={setBeyArray}
+        isIndex={ignoreWhenFavIsTrue}
+      />
+    ));
+
+  return (
+    <div className="index">
+      <h1>Index</h1>
+      {generateCards()}
+    </div>
+  );
+};
 
 export default BeyContainer;
