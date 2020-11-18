@@ -1,9 +1,11 @@
 import React from "react";
 
-const BeyCard = () => {
+const BeyCard = ({ beyObj: { id, name, img, favorite } }) => {
   return (
-    <div className="card">
-
+    <div
+      className="card"
+    >
+      <h3>{(id, img, favorite, name)} </h3>
     </div>
   );
 };
