@@ -12,7 +12,7 @@ const Favorites = ({ beyArray, setBeyArray }) => {
         beyObj={beyObj}
         beyArray={beyArray}
         setBeyArray={setBeyArray}
-        isIndex={(element) => {
+        isIndexPage={() => {
           window.alert("I got a hot sauce in my bag, swag");
           return false;
         }}

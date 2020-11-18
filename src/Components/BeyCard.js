@@ -4,38 +4,31 @@ const BeyCard = ({
   beyObj: { id, name, img, favorite },
   beyArray,
   setBeyArray,
-  isIndex,
+  isIndexPage,
 }) => {
-  const updateArray = (id) => {
-    return beyArray.map((beyObj) =>
-      beyObj.id === id ? alertAndChange(beyObj) : beyObj
-    );
-  };
-
-  const alertAndChange = (beyObj) => {
-    // if (beyObj.favorite === true & clicked From index) do nothing
-    if (beyObj.favorite === true) {
-      if (isIndex(beyObj) === true) {
-        return beyObj; // return OUT when fav is removed from index
-      }
-    }
-    return {
-      ...beyObj,
-      favorite: !beyObj.favorite,
-    };
-  };
-
+  
   const findAndChange = (id) => {
-    setBeyArray(updateArray(id));
+    //ignore and return all objects that are NOT associated with event handler
+    // ignore and return all favorite=true objects that are clicked from index page
+    setBeyArray((beyArray) =>
+      beyArray.map((beyObj) =>
+        beyObj.id !== id ||
+        (beyObj.favorite === true && isIndexPage(beyObj) === true)
+          ? beyObj
+          : {
+              ...beyObj,
+              favorite: !beyObj.favorite,
+            }
+      )
+    );
   };
 
   return (
     <div className="card" onClick={() => findAndChange(id)}>
       <img src={img} alt="beyonce" />
 
-      <h3>{(id, img, favorite, name)} </h3>
+      <h3>{name} </h3>
     </div>
   );
 };
-
 export default BeyCard;

@@ -2,9 +2,7 @@ import React from "react";
 import BeyCard from "../Components/BeyCard";
 
 const BeyContainer = ({ beyArray, setBeyArray }) => {
-  const ignoreWhenFavIsTrue = (placeholder) => {
-    return true;
-  };
+ 
 
   const generateCards = () =>
     beyArray.map((beyObj) => (
@@ -13,7 +11,7 @@ const BeyContainer = ({ beyArray, setBeyArray }) => {
         beyObj={beyObj}
         beyArray={beyArray}
         setBeyArray={setBeyArray}
-        isIndex={ignoreWhenFavIsTrue}
+        isIndexPage={() => true} // ignore when favorite and clicked from index page 
       />
     ));
 
